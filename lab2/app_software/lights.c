@@ -1,7 +1,7 @@
 #define switches (volatile char *) 0x0010
 #define hexs (unsigned int *) 0x0000
 
-void _start(void)
+int main(void)
 {
 	unsigned char tswit;
 
@@ -9,6 +9,7 @@ void _start(void)
 
 	while(1) {
 		tswit = *switches;
-		*hexs = tswit & (tswit << 8) & (tswit << 16);
+		*hexs = tswit | (tswit << 8) | (tswit << 16);
 	}
+	return 0;
 }
